@@ -1,0 +1,61 @@
+body {
+    margin: 0%;
+    font-size: 18px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 100vh;
+}
+.col-left{
+    background-color: blue;
+    flex-basis: 20%;
+}
+.col-left > .brand{
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 10px;
+    font-weight: bolder;
+}
+.col-right{
+    display: flex;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+}
+#message-form>#name{
+    width:70%;
+    padding: 5px;
+}
+.col-right > .msg-box{
+    flex-basis: 100%;
+    height: 95vh;
+}
+.type-box{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    margin: 0 3px;
+}
+.type-box>.form{
+    flex-basis: 60%;
+    align-content: stretch;
+}
+#message-form>button{
+    color: white;
+    background-color:green;
+    font-weight: bold;
+    padding: 5px 7px;
+    border: none;
+    vertical-align: center;
+}
+.loc-button>button{
+    color: white;
+    background-color:green;
+    font-weight: bold;
+    padding: 5px 15px;
+    border: none;
+    vertical-align: center;
+    margin: 0 1px;
+}
