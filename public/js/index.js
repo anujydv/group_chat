@@ -47,12 +47,15 @@ locbut.on('click',function(){
     if(!navigator.geolocation){
         return alert('Geoloction not supported');
     }
+    locbut.attr('disabled','disabled');
     navigator.geolocation.getCurrentPosition(function(pos){
+        locbut.removeAttr('disabled');
         socket.emit('createLocationMessage',{
             lat:pos.coords.latitude,
             lon:pos.coords.longitude
         });
     },function(){
+        locbut.removeAttr('disabled');
         alert('Unable to fetch location');
     });
 });

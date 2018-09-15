@@ -5,17 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="css/style.css">
         <title>Chat App</title>
     </head>
     <body>
-        <p>Welcome to chat app</p>
-        <ol id="msg"></ol>
-        <form action="" id="message-form">
-            <input type="text" name="name" id="" placeholder="message">
-            <button>Send</button>
-        </form>
-        <br>
-        <button id="send-location">Send Location</button>
+        <div class="container">
+            <div class="row">
+                <div class="col-left">
+                    <p class="brand">People</p>
+                </div>
+                <dev class="col-right">
+                    <div class="msg-box">
+                        <ol id="msg"></ol>
+                    </div>
+                    <div class="type-box">
+                        <div class="form">
+                            <form action="" id="message-form">
+                                <input type="text" name="name" id="name" placeholder="message">
+                                <button>Send</button>
+                            </form>
+                        </div>
+                        <div class="loc-button">
+                            <button id="send-location">Send Location</button>
+                        </div>
+                    </div>
+                </dev>
+            </div>
+        </div>
         <script src="/socket.io/socket.io.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script src="js/index.js"></script>
