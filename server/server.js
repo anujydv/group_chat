@@ -1,38 +1,39 @@
 const path = require('path');
-const express = require('express');
-const socket = require('socket.io');
 const http = require('http');
-const {generateMessage,generateLocationMessage} = require('./utils/message');
-const publicPath = path.join(__dirname,'../public');
-const port  = process.env.PORT || 3000;
+const express = require('express');
+const socketIO = require('socket.io');
+
+const {generateMessage, generateLocationMessage} = require('./utils/message');
+const publicPath = path.join(__dirname, '../public');
+const port = process.env.PORT || 3000;
 var app = express();
 var server = http.createServer(app);
-var io = socket(server);
+var io = socketIO(server);
 
 app.use(express.static(publicPath));
 
-io.on('connection',(socket)=>{
-    console.log('New User connected');
+io.on('connection', (socket) => {
+  console.log('New user connected');
 
-    socket.emit('newMsg',generateMessage('admin','welcom to the chat app'));
+  socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
 
-    socket.broadcast.emit('newMsg',generateMessage('admin', 'welcom to the chat app'));
+  socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
 
-    socket.on('createMsg', (msg,callback) => {
-        console.log('msg created', msg);
-        io.emit('newMsg',generateMessage(msg.from,msg.text))
-        callback('this is from server');
-    });
+  socket.on('createMessage', (message, callback) => {
+    console.log('createMessage', message);
+    io.emit('newMessage', generateMessage(message.from, message.text));
+    callback();
+  });
 
-    socket.on('createLocationMessage',(coords)=>{
-        io.emit('newLocationMsg',generateLocationMessage('Admin',coords.lat ,coords.lon));
-    });
+  socket.on('createLocationMessage', (coords) => {
+    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
+  });
 
-    socket.on('disconnect', (socket) => {
-        console.log("Disconnected from client");
-    });
+  socket.on('disconnect', () => {
+    console.log('User was disconnected');
+  });
 });
 
-server.listen(port,()=>{
-    console.log(`Starting at the post ${port}`);
+server.listen(port, () => {
+  console.log(`Server is up on ${port}`);
 });
