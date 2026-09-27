@@ -1,20 +1,15 @@
 # Chat App
 
 ### Description
-> It's a simple chat app, in this group of people can connect and share their thought and do discussions. Anyone can create separate group and others can join in. no other person join till he does not know the group name.
+> A real-time group chat app. Anyone can create a group, and others can join it by name. A group stays private until someone shares its name.
 
 ### Build stack
-  * NodeJs
-
+  * Node.js
   * socket.io
   * HTML and CSS
 
-### How To setup Environment?
+### How to set up the environment
   * `cd group_chat`
   * `npm i`
   * `npm run start`
-
-  * ACCESS ON `http:localhost:3000`
-            <br/><br/>  or
-
-  * Click This Link [Chat APP](https://croom.herokuapp.com/)
+  * Open `http://localhost:3000`
